@@ -8,6 +8,7 @@ import {
   View,
   StyleSheet,
   ImageBackground,
+  Alert,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -82,6 +83,16 @@ const SearchPage = () => {
 
   const [text, setText] = React.useState('');
 
+  const createTwoButtonAlert = () =>
+    Alert.alert('Alert Title', 'My Alert Msg', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ]);
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -120,6 +131,7 @@ const SearchPage = () => {
         <List.Section>
           <List.Item
             style={styles.listItem}
+            onPress={createTwoButtonAlert}
             title="Tops"
             left={() => (
               <List.Icon color={MD3Colors.tertiary70} icon="folder" />
